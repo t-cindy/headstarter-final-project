@@ -1,0 +1,269 @@
+/* switch the default font for the body, and remove top/bottom/left/right margin */
+body {
+    font-family: 'Fresca', sans-serif;
+    margin: 0;
+}
+
+/* font, color, and alignment for the titles of the three displayable regions */
+
+h1 {
+    background-color: #FFD33F;
+    font-size: 24pt;
+    font-weight: bold;
+    height: 42px;
+    text-align: center;
+}
+
+
+/* General styling for the navbar */
+#navbar {
+    background: #e4b10b;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between; /* Align items to the space between for better spacing */
+    align-items: center; /* Vertically center the items */
+    box-shadow: 0 2px 4px rgba(0,0,0,.1); /* subtle shadow for depth */
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox for better alignment */
+    align-items: center;
+}
+
+li a {
+    display: block;
+    color: black;
+    padding: 10px 15px; /* Add more padding for a better touch area */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+li a:hover, li a:focus {
+    color: #fff; /* Change color on hover/focus for better interactivity */
+}
+
+/* Responsive Design: Adjust navbar for smaller screens */
+@media (max-width: 768px) {
+    #navbar ul {
+        flex-direction: column; /* Stack the links vertically on smaller screens */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    #navbar {
+        padding: 10px;
+    }
+}
+
+
+/* Fix this */
+#refreshMessages {
+    position: absolute;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 10px;
+    z-index: 1; 
+    font-size: 24px;
+    color: #888;
+    outline: none;
+    border: none;
+    background-color: #fff;
+}
+
+
+/* Make the button for adding a message hover in the top right */
+#showFormButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#showFormButton {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #e4b10b;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+#showFormButton:hover {
+    background-color: #e6b71f;
+    box-shadow: 0px 15px 20px rgba(46, 46, 46, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+#showFormButton:active {
+    transform: translateY(-1px);
+}
+
+
+#messageList {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around; /* This might already be sufficient if the parent's width is constrained */
+    align-items: flex-start; /* Align items at the start of the flex container */
+    gap: 20px; /* Optional: Adds space between items */
+}
+
+.message-container {
+    border: 20px 20px 20px 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 300px; /* Adjust based on the gap, ensuring 3 per row */
+    height: 345px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: #FFD33F;
+
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+}
+
+.message-container, button {
+    cursor: pointer;
+}
+
+.message-container:hover {
+    cursor: pointer;
+    transform: scale(1.05); /* Increase size by 5% */
+}
+
+.message-container.expanded {
+    width: 400px; /* Increased width */
+    height: 460px; /* Let height adjust to content */
+    font-size: 16px; /* Larger text */
+    /* Adjust padding/margin as needed */
+    padding: 20px;
+}
+
+/* The div should be wider than it absolutely needs to be */
+
+
+/* alternate color of table rows */
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #888}
+
+/* make table row height a bit bigger than necessary */
+tr {
+    height: 15px;
+}
+
+/* make the second column of the table wide */
+td:nth-child(2) {width: 25%;}
+td:nth-child(3) {width: 50%;}
+
+
+/* make the form elements wide, and force a line break after each */
+input, label, textarea {
+    display: block;
+    width: 200px;
+}
+
+/* put some space between textareas and the buttons that follow them */
+textarea {
+    margin-bottom: 5px;
+}
+
+/* put some left space before form elements */
+label, input, textarea,  #likeButton{
+    margin-left: 15px;
+}
+
+/* custom formatting for the span where we put the creation date */
+#editCreated {
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+#expandMessage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #deaf14; /* Background color */
+    color: #fff; /* Text color */
+    text-align: left; /* Ensure the text inside is left as well */
+    z-index: 1000; /* Make sure it sits above other content */
+}
+
+#expandClose {
+    cursor: pointer;
+    background-color: #deaf14;
+    border: none;
+    position: relative;
+    margin-left: 30px;
+    font-size: 24px;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+}
+
+#message {
+    display: flex;
+    flex-direction: column; /* Change flex direction to column */
+    align-items: center;
+    margin-top: 15px;
+    height: auto;
+    width: 90%; 
+    background-color: #e6b71f;
+    padding: 5px 5px 5px 5px;
+    margin-left: auto; /* This will automatically adjust the left margin */
+    margin-right: auto; /* This will automatically adjust the right margin */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), /* Outer shadow */
+                0px 6px 20px rgba(0, 0, 0, 0.19); /* Inner shadow for more depth */
+}
+
+#commentPosition {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#messageInfo {
+    
+    width: 100%;
+    border-bottom: 1px solid #888;
+}
+
+#content {
+    
+    width: 100%;
+}
+
+#messageTitle {
+    width: auto;
+    margin-top: 5px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+#messageContent {
+    width: auto;
+    
+}
+
+/* Can make it so the color changes if you liked/disliked and changes when unliked/undisliked */
+.likbtn, .dislikbtn, .delbtn, .mlikbtn, .mdislikbtn, .editbtn {
+    cursor: pointer;
+    background-color: #FFD33F;
+    border: none;
+    font-size: 15px;
+}

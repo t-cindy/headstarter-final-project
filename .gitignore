@@ -1,0 +1,13 @@
+target/*
+backend/*
+web/node_modules/*
+web/target/*
+out/*.DS_Store
+.gitattributes
+.idea/
+Procfile
+admin-cli/
+
+mobile/
+pom.xml
+src/

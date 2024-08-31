@@ -1,0 +1,170 @@
+<!DOCTYPE html />
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Buzz : Main Page</title>
+  <link rel="stylesheet" href="app.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="app.js"></script>
+</head>
+<body>
+  <div id="addElement">
+    <h3>Add a New Entry</h3>
+    <label>Title</label>
+    <input type="text" id="newTitle" />
+    <label>Message</label>
+    <textarea id="newMessage"></textarea>
+    <!--- Next Line Used in attempt to fix likes by add HTML element -->
+    <input type="hidden" id="newLikes"/>
+    <input type="hidden" id="newDislikes"/>
+    <button id="addButton">Add</button>
+    <button id="addCancel">Cancel</button>
+    <!-- Add a New Entry section -->
+    <label>Link</label>
+    <input type="text" id="newLink" />
+    <label>Attach File</label>
+    <input type="file" id="newFile" />
+  </div>
+  <!-- Will need to make it show the idea with message and comments here when click hexagon -->
+  <div id="expandMessage">
+    <p style="text-align: center; font-size: 50px;">Message!!!</p>
+    <button id="expandClose"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</button>
+    <!-- Will make the message appear here using js -->
+    <div id="message">
+      <div id="messageInfo" class="top-row">
+        <!-- The user who made the message, maybe add when made, maybe user icon as well. -->
+        <div id="userInfo"></div>
+        <div id="messageID"></div>
+        
+      </div>
+      <div id="content">
+        <div id="messageTitle"></div>
+        <div id="messageContent"></div>
+        <div id="messageLink">
+          p>Link:</p>
+            <div id="messageLink"></div>
+        </div>
+        <div id="messageFile">
+          <p>File:</p>
+          <div id="messageFile"></div>
+        </div>
+        
+      </div>
+      <div id="messageButtons">
+        <!-- Change to like and dislike not only like -->
+        <button id="messageLikeCount" class="mlikbtn" style="background-color: #e6b71f;"></button>
+        <button id="messageDislikeCount" class="mdislikbtn" style="background-color: #e6b71f;"></button>
+        <button id="messageComment" class="mcombtn" style="background-color: #e6b71f; cursor: pointer; border: none; font-size: 15px;"></button>
+      </div>
+    </div>
+    <div id="commentPosition">
+      <!-- Add the new comment section below the message content -->
+      <!-- This shi messed up. Make the submit button the one to submit and the messageComment button above the one to make it show up. -->
+      <div id="commentSection">
+        <h4>Add a Comment:</h4>
+        <textarea id="comment" placeholder="Write your comment here..."></textarea>
+        <label>Link</label>
+        <input type="text" id="commentLink" placeholder="Add your link here..."/>
+        <button id="submitComment">Submit Comment</button>
+        <label>Attach File</label>
+        <input type="file" id="commentFile" />
+      </div>
+      <!-- Existing comments display section -->
+      <div id="comments">
+          <!-- Comments will be listed here -->
+      </div>
+    </div>
+  </div>
+  <div id="editElement">
+    <h3>Edit an Entry</h3>
+    <label>Title</label>
+    <input type="text" id="editTitle" />
+    <label>Message</label>
+    <textarea id="editMessage"></textarea>
+    <span id="editCreated"></span>
+    <input type="hidden" id="editId" />
+    <button id="editButton">Update</button>
+    <button id="editCancel">Cancel</button>
+    <!-- Edit an Entry section -->
+    <label>Link</label>
+    <input type="text" id="editLink" />
+    <label>Attach File</label>
+    <input type="file" id="editFile" />
+  </div>
+
+  <div id="showElements">
+    <!-- Need to make a nav bar insead of the h3 -->
+    <nav id="navbar">
+      <ul aria-label="Main navigation">
+        <li><h2><a href="index.html">The Buzz</a></h2></li>
+        <li id="profile"><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+    <button id="refreshMessages"><i class="fa fa-refresh"></i></button> <!-- Will need to add a refresh icon rather than words -->
+    <div id="messageList"></div>
+    <button id="showFormButton">Add Message</button>
+    <!-- Message section -->
+    <div id="messageLink"></div>
+  </div>
+
+  
+  <!-- Google OAuth -->
+  <!--
+  <div id="g_id_onload"
+      data-client_id="933064143423-7617uansfqfh367j2crs0i8kaiiakubn.apps.googleusercontent.com"
+      data-context="signin"
+      data-ux_mode="popup"
+      data-callback="handleCredentialResponse"
+      data-auto_prompt="false">
+  </div>
+
+  <div class="g_id_signin"
+      data-type="standard"
+      data-shape="rectangular"
+      data-theme="outline"
+      data-text="signin_with"
+      data-size="large"
+      data-logo_alignment="left">
+  </div>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  -->
+  <!--
+  <hr />
+  <app-root></app-root>
+  -->
+</body>
+
+<script>
+  // Uncomment when you actually get the database set up for users and have login stuff ready
+  /*
+  if(sessionStorage.getItem('authenticated') !== 'true') {
+      window.location.href = 'login.html'; // Redirect to login page
+  }
+  */
+  /*
+  function handleCredentialResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+
+    const base64Url = response.credential.split('.')[1]; // Get payload
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    const payload = JSON.parse(jsonPayload);
+    console.log("User's email: ", payload.email);
+  }
+  */
+
+  // Add event listener for the refresh button
+  document.getElementById("refreshMessages").addEventListener("click", function() {
+      // Call the refresh method of mainList
+      mainList.refresh();
+  });
+</script>
+
+</html>

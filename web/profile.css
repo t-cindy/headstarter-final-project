@@ -1,0 +1,57 @@
+/* switch the default font for the body, and remove top/bottom/left/right margin */
+body {
+    font-family: 'Fresca', sans-serif;
+    margin: 0;
+}
+
+/* font, color, and alignment for the titles of the three displayable regions */
+
+h1 {
+    background-color: #FFD33F;
+    font-size: 24pt;
+    font-weight: bold;
+    height: 42px;
+    text-align: center;
+}
+
+/* General styling for the navbar */
+#navbar {
+    background: #e4b10b;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between; /* Align items to the space between for better spacing */
+    align-items: center; /* Vertically center the items */
+    box-shadow: 0 2px 4px rgba(0,0,0,.1); /* subtle shadow for depth */
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox for better alignment */
+    align-items: center;
+}
+
+li a {
+    display: block;
+    color: black;
+    padding: 10px 15px; /* Add more padding for a better touch area */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+li a:hover, li a:focus {
+    color: #fff; /* Change color on hover/focus for better interactivity */
+}
+
+/* Responsive Design: Adjust navbar for smaller screens */
+@media (max-width: 768px) {
+    #navbar ul {
+        flex-direction: column; /* Stack the links vertically on smaller screens */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    #navbar {
+        padding: 10px;
+    }
+}
