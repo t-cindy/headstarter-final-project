@@ -28,10 +28,10 @@ This is an individual student repository. It is intended for use during phase 0.
 
 ## Tagged Release Function
 
-- Fixed up the images and files added to messages 
+- This release allows you to add multiple messaged to a board. 
 - Updated web frontend
-- Did more tech debt from last sprints
-- User table and caching for backend
+- You can now like and dislike a post
+- Google OAuth
 
 ## Run locally and on Dokku
 * Running locally: 

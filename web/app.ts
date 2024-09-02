@@ -337,23 +337,6 @@ class ExpandMessageForm {
         else {
             window.alert("Unspecified error...The problem I despise");
         }
-        // Display the link
-        let messageLinkDiv = document.getElementById("messageLink");
-        if (messageLinkDiv && data.mData.mLink) {
-            let anchor = document.createElement("a");
-            anchor.href = data.mData.mLink;
-            anchor.textContent = data.mData.mLink;
-            messageLinkDiv.appendChild(anchor);
-        }
-
-        // Display the file
-        let messageFileDiv = document.getElementById("messageFile");
-        if (messageFileDiv && data.mData.mFile) {
-            // Assuming the file is an image. Adjust this code if it's a different type of file.
-            let img = document.createElement("img");
-            img.src = data.mData.mFile;
-            messageFileDiv.appendChild(img);
-        }
     }
 
     /**
